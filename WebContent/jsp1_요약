@@ -1,0 +1,47 @@
+1.JSP 문법
+1)스크립트릿 : <%	%>
+		-자바 코드 작성
+2)표현식 : <%=	%>
+		-태그요소에 출력내용 작성
+3)지시자 : <%@page	%>
+		-jsp 팡리정보 작성 및 import
+		:<%@include %>
+		-지정된 파일을 삽입(포함)시켜서 컴파일 합니다.
+		
+		
+2.JSP 내장 객체
+여러 내장객체들 중 다루었던 것
+1)out : html 문서에 출력
+		-태그, 스타일, 자바스크립트 적용
+2)request : 요청 전달 객체
+		- getparameter 메소드 : 요청의 쿼리스트링, form요소값을 가져온다
+		- 요청과 관련된 값들 가져오는 getXXX 메소드가 있다. (day2:request_object.jsp참고)
+3)response : 응답 전달 객체
+		- setCharacterEncoding 메소드 : form 요소 값을 post 방식으로 가져올 때 필요
+		
+* 지금까지 했던 소스에서 자바코드와 html 태그를 분리시킨다.
+		- 디자인과 서버 구현을 분리 
+		- 서버구현 소스는 .java (자바클래스)에 작성 서블릿 또는 스프링프레임웍의 방식
+		
+3. JSP 애트리뷰트 : getAttribute, setAttribute 메소드로 데이터 저장 (또는 읽기)를 한다.
+		- 데이터를 저장하는 객체에 따라 scope(범위)가 다르다.
+		- 애트리뷰트 데이터의 타입은 Object : 모든 타입의 데이터를 저장할 수 있다.
+		- getAttiribute 의 리턴타입도 Object
+
+1) request : 요청객체에 데이터를 저장
+2) session : 연결된 브라우저 객체에 데이터를 저장
+3) application : 실행 중인 프로그램(웹프로젝트)에 데이터를 저장. (톰캣이 중단되지 않는다면 계속 저장)
+
+데이터를 저장할 때 수명(life cycle)은 application > session > request 순서이다.
+
+4. requset 객체에 애트리뷰트로 데이터 저장하기
+	pageContext.forward 명령과 같이 사용된다 : 요청을 다른 jsp페이지에 전달한다.
+	ex) a.jsp로 발생된 요청을 b.jsp에 전달한다. : a.jsp와 b.jsp의 request 객체는 동일하다.
+	
+기본적인 동작은
+	사용자 url -> a.jsp 에 대한 request 객체
+			-> b.jsp 에 대한 request 객체
+
+5. JSP2 프로젝트에서 자세히 한다. 테스트만 session 에 애트리뷰트 저장하기 해본다.
+
+6. el : expression lau
